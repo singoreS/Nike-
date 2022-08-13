@@ -1,0 +1,291 @@
+@import url(nav.css);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  background: lightgray;
+}
+
+.logo {
+  width: 60px;
+  margin-top: 15px;
+}
+
+#bas,
+#haut {
+  width: 100%;
+  min-height: 60px;
+}
+
+#bas {
+  background: white;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+#haut {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+#haut > ul {
+  min-width: 280px;
+}
+
+li {
+  display: block;
+  width: 150px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}
+
+main {
+  width: 100%;
+  background: white;
+}
+
+main > section {
+  width: 100%;
+  display: flex;
+  position: relative;
+  gap: 10px;
+  padding: 30px 20px;
+  flex-wrap: wrap;
+}
+
+main > section:first-child,
+main > section:nth-child(3) {
+  flex-direction: column;
+  text-align: center;
+}
+
+header + section {
+  width: 100%;
+  min-height: 80vh;
+  background: rgba(7, 247, 255, 0.521);
+}
+
+section > h2 {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  display: block;
+  width: 100%;
+  min-height: 20px;
+}
+
+section > figure {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-width: 280px;
+  border-radius: 20px;
+}
+
+figure > img {
+  max-width: 100%;
+  min-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+/* rgba = rougegrisbleu */
+figcaption {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  top: 100vh;
+  transition: 0.5s linear;
+  color: black;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  font-size: 20px;
+}
+
+.btn {
+  display: block;
+  min-width: 220px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: black;
+  color: white;
+}
+
+main > section:nth-child(3) > ul > li {
+  display: block;
+  width: 260px;
+}
+
+.centre {
+  margin: auto;
+}
+
+main > section:nth-child(3) > ul {
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+h1,q {
+  font-size: 60px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+q {
+  letter-spacing: -5px;
+}
+
+p {
+  font-size: 20px;
+  margin: 10px auto;
+  width: 50%;
+}
+
+#dgvid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  background-size: cover;
+}
+
+@media screen and (min-width: 768px) {
+  figure:hover figcaption {
+    top: 60vh;
+  }
+  #haut + a,
+  .nav-links > li:first-child,
+  .nav-links li:nth-child(2) {
+    display: none;
+  }
+
+  q::before {
+    content: "«";
+    color: orange;
+  }
+
+  q::after {
+    content: "»";
+    color: violet;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  h1,q {
+    font-size: 53px;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  figure:hover > figcaption {
+    top: 0;
+  }
+  #haut + ul:last-child,
+  header + section,
+  video {
+    display: none;
+  }
+
+  #haut + a {
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    font-size: 10px;
+  }
+
+  .nav-links {
+    position: fixed;
+    background: black;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 1s linear;
+    z-index: 5;
+  }
+  .nav-links li a {
+    font-size: 30px;
+  }
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid white;
+  }
+
+  .nav-links li:nth-child(2) > a {
+    color: crimson;
+  }
+
+  /* .nav-links:not(:target) {
+    right: 200%;
+  }
+  .nav-links:target {
+    right: 0;
+  } */
+  .nav-links span {
+    width: 100%;
+    height: 4px;
+    background: black;
+    display: block;
+    position: absolute;
+    top: 50px;
+  }
+
+  .nav-links span::before,
+  .nav-links span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: black;
+    transition: background 1s ease;
+    transition: transform .5s ease;
+  }
+
+  .nav-links span::before{
+    transform: translateY(-10px);
+    
+  }
+  .nav-links span::after{
+    transform: translateY(10px);
+    
+  }
+
+  /* animation du burger */
+  /* premier span */
+  .nav-links.active span::before{
+    transform: translateY(0px) rotateZ(45deg);
+    background: red;
+
+  }
+.nav-links.active span::after{
+  transform: translateY(0px) rotateZ(-45deg);
+  background: red;}
+
+  .nav-links.active span{ background: transparent;}
+}
